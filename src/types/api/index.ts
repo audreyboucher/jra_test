@@ -1,8 +1,8 @@
 export type { Headers, Error } from './common';
 
-export type * from './user';
-export type * from './contact';
-export type * from './file';
-export type * from './vehicle';
-export type * from './order';
-export type * from './history';
+export * from './user';
+export * from './contact';
+export * from './file';
+export * from './vehicle';
+export * from './order';
+export * from './history';

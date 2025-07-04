@@ -1,41 +1,67 @@
 import React, { FC, ReactElement, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Theme } from "@radix-ui/themes";
 
-import { AuthContext, useAuth } from './context/auth';
-import { Home, Login } from './pages';
+import { AuthContext, useIsAuthenticated } from './context/auth';
+import Users from './api/users.json';
+
+import { Contacts, Login, Logout } from './pages';
+
+import { LoginResponse, User } from './types/api';
+import { Nullable } from './types';
+
+import './styles/global.scss';
+
+const getUserRole = (token: User['token'] | null): User['role'] | null => {
+  if (token) {
+    const user = (Users as User[]).find(({ token: userToken }) => userToken === token);
+    return user ? user.role : null;
+  }
+
+  return null;
+};
 
 const PrivateRoute: FC<{ children: ReactElement }> = ({ children }) => {
-  const isAuthenticated = useAuth();
+  const isAuthenticated = useIsAuthenticated();
   return isAuthenticated ? children : <Navigate replace to="/login" />;
 };
 
-const App = () => {
-  const [authToken, setAuthToken] = useState<string>('');
+export const routes = [
+  {
+    path: '/',
+    element: <PrivateRoute><Contacts /></PrivateRoute>,
+  },
+  {
+    path: '/contacts',
+    element: <PrivateRoute><Contacts /></PrivateRoute>,
+  },
+  {
+    path: '/login',
+    element: <Login />,
+  },
+  {
+    path: '/logout',
+    element: <Logout />,
+  },
+];
 
-  const setToken = (token: string | null) => {
+const App = () => {
+  const [authToken, setAuthToken] = useState<User['token'] | null>(localStorage.getItem('token'));
+  const [authRole, setAuthRole] = useState<User['role'] | null>(getUserRole(authToken));
+
+  const setAuth = ({ token, role }: Nullable<LoginResponse>) => {
     if (token) localStorage.setItem('token', JSON.stringify(token));
     else localStorage.removeItem('token');
 
-    setAuthToken(token || '');
+    setAuthToken(token);
+    setAuthRole(role);
   };
 
   return (
-    <AuthContext.Provider value={{ authToken, setAuthToken: setToken }}>
+    <AuthContext.Provider value={{ auth: { token: authToken, role: authRole }, setAuth }}>
       <Router>
-        <Theme
-          accentColor="mint"
-          grayColor="gray"
-          panelBackground="solid"
-          scaling="100%"
-          radius="full"
-          appearance="dark"
-        >
           <Routes>
-            <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
-            <Route path="/login" element={<Login />} />
+            {routes.map((props) => <Route {...props} />)}
           </Routes>
-        </Theme>
       </Router>
     </AuthContext.Provider>
   );

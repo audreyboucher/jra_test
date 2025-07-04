@@ -1,9 +1,22 @@
+import { login } from '../api/methods/users';
+
+import { LoginRequest } from '../types/api';
+
 export enum Method {
   GET = 'GET',
   POST = 'POST',
   PATCH = 'PATCH',
   PUT = 'PUT',
   DEL = 'DELETE',
+};
+
+export const sendFakeRequest =  async <R, T>(method: Method, url: string, data?: R): Promise<T> => {
+  switch (url) {
+    case '/login':
+      return login(data as LoginRequest) as Promise<T>;
+    default:
+      return new Promise(() => {});
+  }
 };
 
 export const sendRequest = async <R, T>(method: Method, url: string, data?: R): Promise<T> => {

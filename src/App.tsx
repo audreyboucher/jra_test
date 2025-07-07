@@ -49,7 +49,7 @@ const App = () => {
   const [authRole, setAuthRole] = useState<User['role'] | null>(getUserRole(authToken));
 
   const setAuth = ({ token, role }: Nullable<LoginResponse>) => {
-    if (token) localStorage.setItem('token', JSON.stringify(token));
+    if (token) localStorage.setItem('token', token);
     else localStorage.removeItem('token');
 
     setAuthToken(token);
@@ -58,7 +58,7 @@ const App = () => {
 
   return (
     <AuthContext.Provider value={{ auth: { token: authToken, role: authRole }, setAuth }}>
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <Routes>
             {routes.map((props) => <Route {...props} />)}
           </Routes>

@@ -20,7 +20,7 @@ const Login: FC = () => {
     setError(null);
 
     sendFakeRequest<LoginRequest, LoginResponse>(Method.POST, '/login', { email, password })
-      .then((data) => { setAuth(data); })
+      .then((data) => { setAuth(data as LoginResponse); })
       .catch(({ message }) => { setError(message); });
   };
 

@@ -1,4 +1,4 @@
-export type { Headers, Error } from './common';
+export type { Headers, PaginationResponse, Sort, Error } from './common';
 
 export * from './user';
 export * from './contact';

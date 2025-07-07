@@ -1,4 +1,4 @@
-import { PaginationRequest, PaginationResponse, ErrorResponse } from './common';
+import { PaginationRequest, PaginationResponse, ErrorResponse, Sort } from './common';
 
 export interface Contact {
   id: string;
@@ -16,7 +16,7 @@ export type GetContactsRequest = {
   lastName?: string;
   emailDomain?: string;
   hasFile?: boolean | 'true' | 'false';
-} & PaginationRequest;
+} & PaginationRequest & Sort<Contact>;
 export type GetContactsResponse = PaginationResponse<Contact> | ErrorResponse;
 
 // POST /contacts

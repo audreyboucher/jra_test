@@ -4,11 +4,16 @@ export type PaginationRequest = {
 };
 
 export type PaginationResponse<T> = {
-  item: T[];
+  items: T[];
   total: number;
   page: number;
   limit: number;
   pages: number;
+};
+
+export type Sort<T> = {
+  sortBy?: keyof T;
+  isDesc?: boolean;
 };
 
 export type Headers = {

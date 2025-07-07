@@ -112,37 +112,39 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Here is how the project's tree looks like:
 
+```
 .
-├── [public](./public)
-├── [src](./src)
-│ ├── [api](./src/api)
-│ │ ├── [methods](./src/api/methods)
+├── public
+├── src
+│ ├── api
+│ │ ├── methods
 │ │ └── ...
-│ ├── [components](./src/components)
-│ │ ├── [Layout](./src/components/Layout)
-│ │ │ ├── [Layout.module.scss](./src/components/Layout/Layout.module.scss)
-│ │ │ └── [Layout.tsx](./src/components/Layout/Layout.tsx)
+│ ├── components
+│ │ ├── Layout
+│ │ │ ├── Layout.module.scss
+│ │ │ └── Layout.tsx
 │ │ └── ...
-│ ├── [context](./src/context)
-│ │ └── [auth.ts](./src/context/auth.ts)
-│ ├── [hooks](./src/hooks)
-│ ├── [pages](./src/pages)
-│ │ ├── [Contacts](./src/pages/Contacts)
-│ │ │ ├── [Contacts.tsx](./src/pages/Contacts/Contacts.tsx)
-│ │ │ └── [fields.json](./src/pages/Contacts/fields.json)
-│ │ ├── [Login](./src/pages/Login)
-│ │ │ └── [Login.tsx](./src/pages/Login/Login.tsx)
+│ ├── context
+│ │ └── auth.ts
+│ ├── hooks
+│ ├── pages
+│ │ ├── Contacts
+│ │ │ ├── Contacts.tsx
+│ │ │ └── fields.json
+│ │ ├── Login
+│ │ │ └── Login.tsx
 │ │ └── ...
-│ ├── [styles](./src/styles)
-│ ├── [types](./src/types)
-│ │ ├── [api](./src/types/api)
+│ ├── styles
+│ ├── types
+│ │ ├── api
 │ │ └── ...
-│ ├── [utils](./src/utils)
-│ ├── [App.tsx](./src/App.tsx)
-│ └── [index.tsx](./src/index.tsx)
-├── [package.json](./package.json)
-├── [README.md](./README.md)
-└── [tsconfig.json](./tsconfig.json)
+│ ├── utils
+│ ├── App.tsx
+│ └── index.tsx
+├── package.json
+├── README.md
+└── tsconfig.json
+```
 
 ### API
 

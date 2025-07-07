@@ -1,0 +1,20 @@
+.fullWidth {
+  align-self: stretch;
+
+  button {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+    cursor: pointer;
+  }
+}
+
+.close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  cursor: pointer;
+
+  button {
+    cursor: pointer;
+  }
+}

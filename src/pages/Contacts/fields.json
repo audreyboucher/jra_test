@@ -1,0 +1,36 @@
+[
+  {
+    "name": "id",
+    "title": "ID",
+    "hidden": true
+  },
+  {
+    "name": "firstName",
+    "title": "First name",
+    "type": "text",
+    "required": true,
+    "placeholder": "John"
+  },
+  {
+    "name": "lastName",
+    "title": "Last name",
+    "type": "text",
+    "required": true,
+    "placeholder": "Snow"
+  },
+  {
+    "name": "email",
+    "title": "Email address",
+    "type": "email",
+    "required": true,
+    "placeholder": "john.snow@jra.com"
+  },
+  {
+    "name": "phone",
+    "title": "Phone number",
+    "type": "text",
+    "pattern": "[+][0-9]{11}",
+    "required": true,
+    "placeholder": "Format: +33612345678"
+  }
+]

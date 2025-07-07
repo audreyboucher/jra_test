@@ -1,0 +1,20 @@
+$hidden-position: -200px;
+$visible-position: var(--space-5);
+
+@keyframes show {
+  0% { bottom: $hidden-position; }
+  10% { bottom: $visible-position; }
+  90% { bottom: $visible-position; }
+  100% { bottom: $hidden-position; }
+}
+
+.container {
+  position: fixed;
+  bottom: $visible-position;
+  right: $visible-position;
+  transition: bottom .2s ease-in-out;
+
+  &.visible {
+    animation: show 10s 1;
+  }
+}
